@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-content>
+  <v-app id="app" >
+    <v-content id="app-container" >
       <router-view/>
     </v-content>
   </v-app>
@@ -14,3 +14,23 @@ export default {
 
 };
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background: url("./assets/bg.png");
+}
+
+#app-container {
+  width: 20vw;
+  min-width: 150px !important;
+  max-width: 300px !important;
+  height: 100vh;
+  min-height: 320px !important;
+  margin: 0 auto;
+}
+</style>

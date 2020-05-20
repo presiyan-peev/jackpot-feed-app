@@ -1,14 +1,19 @@
 <template>
   <div class="home">
     home
+    <BigPot />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
+import BigPot from '@/components/BigPot.vue'
 
 export default {
   name: 'Home',
+  components: {
+    BigPot
+  }
 }
+
 </script>
