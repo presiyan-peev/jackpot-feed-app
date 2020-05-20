@@ -11,6 +11,7 @@
 <script>
 import dailyDrop from "../assets/daily_drop.png"
 import box from "../assets/box.png"
+
 import DropCounter from '@/components/DropCounter.vue'
 
 export default {
