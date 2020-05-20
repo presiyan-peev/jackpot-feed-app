@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     home
-    {{ info }}
+    {{ bigDrop }}
     <BigPot />
     <MediumPot />
     <MediumPot />
@@ -18,7 +18,8 @@ import axios from 'axios'
 export default {
   data: () => {
     return {
-      info: null
+      bigDrop: null,
+      mediumDrops: [],
     }
   },
   name: 'Home',
@@ -29,7 +30,18 @@ export default {
   mounted () {
     axios
       .get('http://localhost:3000/pots')
-      .then(response => (this.info = response.data[0].type))
+      .then(response => {
+        for(const drop of response.data) {
+          if(drop.type==="big") {
+            this.bigDrop = drop 
+          } else {
+            this.mediumDrops.push(drop)
+          }
+        }
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 }
 
