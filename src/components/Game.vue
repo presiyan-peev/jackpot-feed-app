@@ -12,7 +12,7 @@
 import BigPot from '@/components/BigPot.vue'
 import MediumPot from '@/components/MediumPot.vue'
 
-import axios from 'axios'
+//import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -33,12 +33,10 @@ export default {
 
 	methods: {
 		...mapActions([
-			'setDailyPot',
-			'setSuperPot',
-			'setHourlyPot'
+			'fetchPots'
 		]),
 
-		async fetchPots() {
+		/* async fetchPots() {
 			await axios
 				.get('http://localhost:3000/pots')
 				.then(response => {
@@ -61,7 +59,7 @@ export default {
 				.catch(err => {
 					console.error(err)
 				})
-		}
+		} */
 	},
 
 	created () {

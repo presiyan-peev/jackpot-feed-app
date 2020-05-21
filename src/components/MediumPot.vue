@@ -7,7 +7,7 @@
                 </v-col>
                 <v-col>
                     <p class="prize">$129.78</p>
-                    <DropCounter />
+                    <DropCounter timer="01:53:14" />
                 </v-col>
             </v-row>
         </v-container>
