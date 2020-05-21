@@ -1,7 +1,6 @@
 <template>
   <div class="game">
     game
-    {{ getHourlyPot }}
     <BigPot />
     <MediumPot />
     <MediumPot />
@@ -17,54 +16,57 @@ import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  data: () => {
-    return {
-      
-    }
-  },
-  name: 'Game',
-  components: {
-    BigPot,
-    MediumPot
-  },
-  computed: {
-    ...mapGetters([
-      "getdailyPot",
-      "getSuperPot",
-      "getHourlyPot"
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'setdailyPot',
-      'setSuperPot',
-      'setHourlyPot'
-    ])
-  },
-  mounted () {
-    axios
-      .get('http://localhost:3000/pots')
-      .then(response => {
-        for(const drop of response.data) {
-          switch(drop.imageType) {
-            case 'daily_drop':
-              this.setdailyPot(drop) 
-              break
-            case 'super_drop':
-              this.setSuperPot(drop)
-              break
-            case 'hourly_drop':
-              this.setHourlyPot(drop)
-              break
-            default:
-              console.err("something bad was returned")
-          }
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
+	name: 'Game',
+	
+	components: {
+		BigPot,
+		MediumPot
+	},
+
+	computed: {
+		...mapGetters([
+			"getDailyPot",
+			"getSuperPot",
+			"getHourlyPot"
+		])
+	},
+
+	methods: {
+		...mapActions([
+			'setDailyPot',
+			'setSuperPot',
+			'setHourlyPot'
+		]),
+
+		async fetchPots() {
+			await axios
+				.get('http://localhost:3000/pots')
+				.then(response => {
+					for(const drop of response.data) {
+					switch(drop.imageType) {
+						case 'daily_drop':
+						this.setDailyPot(drop) 
+						break
+						case 'super_drop':
+						this.setSuperPot(drop)
+						break
+						case 'hourly_drop':
+						this.setHourlyPot(drop)
+						break
+						default:
+						console.err("something bad was returned")
+					}
+					}
+				})
+				.catch(err => {
+					console.error(err)
+				})
+		}
+	},
+
+	created () {
+		this.fetchPots()
+	}
 }
 
 </script>

@@ -1,29 +1,36 @@
 <template>
     <div>
-        <v-img :src="dailyDrop"></v-img>
-        <v-img :src="box">$1,167.98</v-img>
+        <v-img :src="dailyDropPic"></v-img>
+        <v-img :src="box">{{getDailyPot.currency}}{{getDailyPot.amount}}</v-img>
         <v-sheet tile class="sheet">
-            <DropCounter />
+            <DropCounter :timer="getDailyPot.must_drop_in" />
         </v-sheet>
     </div>
 </template>
 
 <script>
-import dailyDrop from "../assets/daily_drop.png"
+import dailyDropPic from "../assets/daily_drop.png"
 import box from "../assets/box.png"
 
 import DropCounter from '@/components/DropCounter.vue'
 
+import { mapGetters } from 'vuex'
+
 export default {
     data: () => {
         return {
-            dailyDrop: dailyDrop,
+            dailyDropPic: dailyDropPic,
             box: box
         }
     },
     components: {
         DropCounter,
-    }   
+    },
+    computed: {
+        ...mapGetters([
+            "getDailyPot",  
+        ])
+    }
 }
 </script>
 <style>
