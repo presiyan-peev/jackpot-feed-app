@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     home
-    {{ bigDrop }}
+    {{ getBigDrop }}
     <BigPot />
     <MediumPot />
     <MediumPot />
@@ -14,12 +14,12 @@ import BigPot from '@/components/BigPot.vue'
 import MediumPot from '@/components/MediumPot.vue'
 
 import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data: () => {
     return {
-      bigDrop: null,
-      mediumDrops: [],
+      
     }
   },
   name: 'Home',
@@ -27,15 +27,27 @@ export default {
     BigPot,
     MediumPot
   },
+  computed: {
+    ...mapGetters([
+      "getBigDrop",
+      "getMediumDrops"
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'setBigDrop',
+      'addMediumDrop'
+    ])
+  },
   mounted () {
     axios
       .get('http://localhost:3000/pots')
       .then(response => {
         for(const drop of response.data) {
           if(drop.type==="big") {
-            this.bigDrop = drop 
+            this.setBigDrop(drop) 
           } else {
-            this.mediumDrops.push(drop)
+            this.addMediumDrop(drop)
           }
         }
       })
