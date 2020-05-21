@@ -2,15 +2,15 @@
   <div class="game">
     game
     <BigPot />
-    <!-- <MediumPot />
-    <MediumPot /> -->
-  </div>
+    <MediumPot :isHourlyDrop="false" />
+    <MediumPot :isHourlyDrop="true" />
+  </div> 
 </template>
 
 <script>
 // @ is an alias to /src
 import BigPot from '@/components/BigPot.vue'
-//import MediumPot from '@/components/MediumPot.vue'
+import MediumPot from '@/components/MediumPot.vue'
 
 import { mapActions } from 'vuex'
 
@@ -19,7 +19,7 @@ export default {
 	
 	components: {
 		BigPot,
-		//MediumPot
+		MediumPot
 	},
 
 	methods: {

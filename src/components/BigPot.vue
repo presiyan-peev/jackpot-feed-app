@@ -3,7 +3,7 @@
         <v-img :src="dailyDropPic"></v-img>
         <v-img :src="box">{{getDailyPot.currency}}{{getDailyPot.amount}}</v-img>
         <v-sheet tile class="sheet">
-            <DropCounter :timer="getDailyPot.must_drop_in" />
+            <DropCounter pot="daily" />
         </v-sheet>
     </div>
 </template>

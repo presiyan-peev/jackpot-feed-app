@@ -16,9 +16,13 @@ export default new Vuex.Store({
     getSuperPot: (state) => state.superPot,
     getHourlyPot: (state) => state.hourlyPot,
 
+    // getters for easier manipulation
     getDailyPotCountDown: (state) => state.dailyPot.countdown,
     getSuperPotCountDown: (state) => state.superPot.countdown,
     getHourlyPotCountDown: (state) => state.hourlyPot.countdown,
+
+    // easier to handle the watcher at MediumPot
+    getMediumPots: (state) => [state.superPot, state.hourlyPot]
   },
   mutations: {
     SET_BIG_DROP(state, val) {
