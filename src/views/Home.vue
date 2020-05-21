@@ -1,60 +1,19 @@
 <template>
   <div class="home">
-    home
-    {{ getBigDrop }}
-    <BigPot />
-    <MediumPot />
-    <MediumPot />
+    <Game />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import BigPot from '@/components/BigPot.vue'
-import MediumPot from '@/components/MediumPot.vue'
+import Game from '@/components/Game.vue'
 
-import axios from 'axios'
-import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  data: () => {
-    return {
-      
-    }
-  },
   name: 'Home',
   components: {
-    BigPot,
-    MediumPot
+    Game
   },
-  computed: {
-    ...mapGetters([
-      "getBigDrop",
-      "getMediumDrops"
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'setBigDrop',
-      'addMediumDrop'
-    ])
-  },
-  mounted () {
-    axios
-      .get('http://localhost:3000/pots')
-      .then(response => {
-        for(const drop of response.data) {
-          if(drop.type==="big") {
-            this.setBigDrop(drop) 
-          } else {
-            this.addMediumDrop(drop)
-          }
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
 }
 
 </script>
