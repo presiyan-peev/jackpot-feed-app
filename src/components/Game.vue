@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     game
-    {{ getBigDrop }}
+    {{ getHourlyPot }}
     <BigPot />
     <MediumPot />
     <MediumPot />
@@ -29,14 +29,16 @@ export default {
   },
   computed: {
     ...mapGetters([
-      "getBigDrop",
-      "getMediumDrops"
+      "getdailyPot",
+      "getSuperPot",
+      "getHourlyPot"
     ])
   },
   methods: {
     ...mapActions([
-      'setBigDrop',
-      'addMediumDrop'
+      'setdailyPot',
+      'setSuperPot',
+      'setHourlyPot'
     ])
   },
   mounted () {
@@ -44,10 +46,18 @@ export default {
       .get('http://localhost:3000/pots')
       .then(response => {
         for(const drop of response.data) {
-          if(drop.type==="big") {
-            this.setBigDrop(drop) 
-          } else {
-            this.addMediumDrop(drop)
+          switch(drop.imageType) {
+            case 'daily_drop':
+              this.setdailyPot(drop) 
+              break
+            case 'super_drop':
+              this.setSuperPot(drop)
+              break
+            case 'hourly_drop':
+              this.setHourlyPot(drop)
+              break
+            default:
+              console.err("something bad was returned")
           }
         }
       })

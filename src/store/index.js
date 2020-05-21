@@ -5,28 +5,36 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    bigDrop: null,
-    mediumDrops: [],
+    dailyPot: null,
+    superPot: null,
+    hourlyPot: null,
   },
   getters: {
-    getBigDrop: (state) => state.bigDrop,
-    getMediumDrops: (state) => state.mediumDrops,
+    getDailyPot: (state) => state.dailyPot,
+    getSuperPot: (state) => state.superPot,
+    getHourlyPot: (state) => state.hourlyPot,
   },
   mutations: {
     SET_BIG_DROP(state, val) {
-      state.bigDrop = val
+      state.dailyPot = val
     },
-    ADD_MED_DROP(state, val) {
-      state.mediumDrops.push(val)
-    }
+    SET_SUPER_DROP(state, val) {
+      state.superPot = val
+    },
+    SET_HOURLY_DROP(state, val) {
+      state.hourlyPot = val
+    },
   },
   actions: {
-    setBigDrop({ commit }, bigDrop) {
-      commit('SET_BIG_DROP', bigDrop)
+    setDailyPot({ commit }, dailyPot) {
+      commit('SET_BIG_DROP', dailyPot)
     },
-    addMediumDrop({ commit }, mediumDrop) {
-      commit('ADD_MED_DROP', mediumDrop)
-    }
+    setSuperPot({ commit }, superPot) {
+      commit('SET_SUPER_DROP', superPot)
+    },
+    setHourlyPot({ commit }, hourlyPot) {
+      commit('SET_HOURLY_DROP', hourlyPot)
+    },
   },
   modules: {
   }
