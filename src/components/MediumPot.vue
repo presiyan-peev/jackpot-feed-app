@@ -30,9 +30,8 @@ import { mapGetters } from 'vuex'
 export default {
     data: () => {
         return {
-            prize: null,
             countdown: null,
-            currency: '',
+            currency: '$',
             amount: 0
         }
     },
@@ -54,11 +53,16 @@ export default {
         pot() {
             return this.isHourlyDrop ? 'hourly' : 'super'
         },
+        /* amount() {
+            return this.isHourlyDrop ? this.getHourlyPot.amount : this.getSuperPot.amount
+        },
+        countdown() {
+            return this.isHourlyDrop ? this.getHourlyPot.countdown : this.getSuperPot.countdown
+        } */
     },
     watch: {
         getSuperPot(newValue) {
             if(!this.isHourlyDrop){
-                //this.prize = newValue.currency + newValue.amount
                 this.currency = newValue.currency
                 this.amount = newValue.amount
                 this.countdown = newValue.countdown
@@ -66,7 +70,6 @@ export default {
         },
         getHourlyPot(newValue) {
             if(this.isHourlyDrop){
-                //this.prize = newValue.currency + newValue.amount
                 this.currency = newValue.currency
                 this.amount = newValue.amount
                 this.countdown = newValue.countdown

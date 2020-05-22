@@ -6,7 +6,7 @@
 				:value="getDailyPot.amount-0" 
 				:currency="getDailyPot.currency" />
 		</v-img>
-        <v-sheet tile light class="sheet">
+        <v-sheet tile dark class="sheet">
             <DropCounter pot="daily" />
         </v-sheet>
     </div>
@@ -41,7 +41,6 @@ export default {
 </script>
 <style>
 .sheet{
-    opacity: 0.1;
     height: 50px;
 }
 </style>
