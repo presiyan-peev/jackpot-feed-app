@@ -1,8 +1,11 @@
 <template>
     <div>
         <v-img :src="dailyDropPic"></v-img>
-        <v-img :src="box">{{getDailyPot.currency}}{{getDailyPot.amount}}</v-img>
-        <v-sheet tile class="sheet">
+        <v-img :src="box">
+			<span>{{getDailyPot.currency}}</span> 
+			<span>	<AnimatedAmount :value="getDailyPot.amount-0" />	</span>
+		</v-img>
+        <v-sheet tile light class="sheet">
             <DropCounter pot="daily" />
         </v-sheet>
     </div>
@@ -12,6 +15,7 @@
 import dailyDropPic from "../assets/daily_drop.png"
 import box from "../assets/box.png"
 
+import AnimatedAmount from '@/components/AnimatedAmount.vue'
 import DropCounter from '@/components/DropCounter.vue'
 
 import { mapGetters } from 'vuex'
@@ -24,6 +28,7 @@ export default {
         }
     },
     components: {
+		AnimatedAmount,
         DropCounter,
     },
     computed: {

@@ -6,7 +6,9 @@
                     <v-img :src="dropImg"></v-img>
                 </v-col>
                 <v-col>
-                    <p class="prize">{{prize}}</p>
+                    <div>
+                        <span>{{currency}}</span> <span><AnimatedAmount :value="amount-0" /></span>
+                    </div>
                     <DropCounter v-if="countdown" :pot="pot"  />
                 </v-col>
             </v-row>
@@ -18,6 +20,7 @@
 import hourlyDrop from "../assets/hourly_drop.png"
 import superDrop from "../assets/super_drop.png"
 
+import AnimatedAmount from '@/components/AnimatedAmount.vue'
 import DropCounter from '@/components/DropCounter.vue'
 
 import { mapGetters } from 'vuex'
@@ -25,13 +28,14 @@ import { mapGetters } from 'vuex'
 export default {
     data: () => {
         return {
-        //    dropImg: null,
             prize: null,
             countdown: null,
-        //    pot: '',
+            currency: '',
+            amount: 0
         }
     },
     components: {
+        AnimatedAmount,
         DropCounter,
     },
     props: ['isHourlyDrop'],
@@ -48,30 +52,22 @@ export default {
         pot() {
             return this.isHourlyDrop ? 'hourly' : 'super'
         },
-        /* amount() {
-            return this.isHourlyDrop ? (this.getHourlyPot.currency + this.getHourlyPot.amount) : (this.getSuperPot.currency + this.getSuperPot.amount)
-        },
-
-        // TODO replace false with 'getSuperPotCountDown' and do the necessary changes in the store
-        countdown() {
-            return this.isHourlyDrop ? 'getHourlyPotCountDown' : false      
-        } */
     },
     watch: {
         getSuperPot(newValue) {
             if(!this.isHourlyDrop){
-                //this.dropImg = superDrop
-                this.prize = newValue.currency + newValue.amount
+                //this.prize = newValue.currency + newValue.amount
+                this.currency = newValue.currency
+                this.amount = newValue.amount
                 this.countdown = newValue.countdown
-                //this.pot = 'super'
             }
         },
         getHourlyPot(newValue) {
             if(this.isHourlyDrop){
-                //this.dropImg = hourlyDrop
-                this.prize = newValue.currency + newValue.amount
+                //this.prize = newValue.currency + newValue.amount
+                this.currency = newValue.currency
+                this.amount = newValue.amount
                 this.countdown = newValue.countdown
-                //this.pot = 'hourly'
             }
         }
     }

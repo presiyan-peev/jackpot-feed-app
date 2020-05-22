@@ -1,6 +1,5 @@
 <template>
   <div class="game">
-    game
     <BigPot />
     <MediumPot :isHourlyDrop="false" />
     <MediumPot :isHourlyDrop="true" />
@@ -30,6 +29,7 @@ export default {
 
 	created () {
 		this.fetchPots()
+
 	}
 }
 

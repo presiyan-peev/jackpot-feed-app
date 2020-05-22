@@ -10,6 +10,9 @@ export default new Vuex.Store({
     dailyPot: null,
     superPot: null,
     hourlyPot: null,
+
+    // stores the quantity of performed fetches from the API
+    fetchCount: 0,
   },
   getters: {
     getDailyPot: (state) => state.dailyPot,
@@ -21,21 +24,28 @@ export default new Vuex.Store({
     getSuperPotCountDown: (state) => state.superPot.countdown,
     getHourlyPotCountDown: (state) => state.hourlyPot.countdown,
 
-    // easier to handle the watcher at MediumPot
-    getMediumPots: (state) => [state.superPot, state.hourlyPot]
+    getFetchCount: (state) => state.fetchCount
   },
   mutations: {
     SET_BIG_DROP(state, val) {
       state.dailyPot = val
+      state.dailyPot.amount = (val.amount * Math.pow(1.001, state.fetchCount)).toFixed(2)    // after each fetch the amount will be increased by 0.1%
     },
     SET_SUPER_DROP(state, val) {
       state.superPot = val
+      state.superPot.amount = (val.amount * Math.pow(1.001, state.fetchCount)).toFixed(2)     // after each fetch the amount will be increased by 0.1%
     },
     SET_HOURLY_DROP(state, val) {
       state.hourlyPot = val
+      state.hourlyPot.amount = (val.amount * Math.pow(1.001, state.fetchCount)).toFixed(2)     // after each fetch the amount will be increased by 0.1%
+    },
+
+    INCREMENT_FETCH_COUNT(state) {
+      ++state.fetchCount
     },
 
     UPDATE_COUNTDOWN(state, pot) {
+      if (state[pot]) {
       if (state[pot].countdown) {
         if (state[pot].countdown.secondsRemaining > 0) {
           --state[pot].countdown.secondsRemaining
@@ -55,6 +65,7 @@ export default new Vuex.Store({
         }
       }
     }
+    }
   },
   actions: {
     countdown({ commit }, pot) {
@@ -69,8 +80,7 @@ export default new Vuex.Store({
  * 
  * TODO - move the creation of countdown in a separate function
  */
-    fetchPots({ commit, dispatch }) {
-      console.log('fetching...')
+    fetchPotsFromApi({ commit }) {
       axios
         .get('http://localhost:3000/pots')
         .then(response => {
@@ -110,15 +120,39 @@ export default new Vuex.Store({
                 console.err("something bad was returned")
             }
           }
-          setInterval(() => {
+          commit('INCREMENT_FETCH_COUNT')
+          /* setInterval(() => {
             dispatch('countdown', 'dailyPot')
             dispatch('countdown', 'superPot')
             dispatch('countdown', 'hourlyPot')
-          }, 1000)
+          }, 1000) */
         })
         .catch(err => {
           console.error(err)
         })
-    }, 
+      
+    },
+
+    fetchPots({ dispatch }) {
+      dispatch('fetchPotsFromApi').then(
+      setInterval(() => {
+        dispatch('fetchPotsFromApi')
+      }, 30000))
+
+      setInterval(() => {
+        dispatch('countdown', 'dailyPot')
+        dispatch('countdown', 'superPot')
+        dispatch('countdown', 'hourlyPot')
+      }, 1000)
+    }
+
+    /* updatePots({commit}) {
+      axios
+        .get('http://localhost:3000/pots')
+        .then(response => {
+          for (const drop of response.data) {
+            
+          }
+    }, */
   },
 })
