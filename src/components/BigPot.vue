@@ -2,8 +2,9 @@
     <div>
         <v-img :src="dailyDropPic"></v-img>
         <v-img :src="box">
-			<span>{{getDailyPot.currency}}</span> 
-			<span>	<AnimatedAmount :value="getDailyPot.amount-0" />	</span>
+			<AnimatedAmount 
+				:value="getDailyPot.amount-0" 
+				:currency="getDailyPot.currency" />
 		</v-img>
         <v-sheet tile light class="sheet">
             <DropCounter pot="daily" />

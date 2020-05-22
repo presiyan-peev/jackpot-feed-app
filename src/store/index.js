@@ -48,14 +48,14 @@ export default new Vuex.Store({
       if (state[pot]) {
       if (state[pot].countdown) {
         if (state[pot].countdown.secondsRemaining > 0) {
-          --state[pot].countdown.secondsRemaining
+          state[pot].countdown.secondsRemaining = (state[pot].countdown.secondsRemaining < 11) ? ('0' + --state[pot].countdown.secondsRemaining) : --state[pot].countdown.secondsRemaining
         } else {
           if (state[pot].countdown.minutesRemaining > 0) {
-            --state[pot].countdown.minutesRemaining
+            state[pot].countdown.minutesRemaining = (state[pot].countdown.minutesRemaining < 11) ? ('0' + --state[pot].countdown.minutesRemaining) : --state[pot].countdown.minutesRemaining
             state[pot].countdown.secondsRemaining = 59
           } else {
             if (state[pot].countdown.hoursRemaining > 0) {
-              --state[pot].countdown.hoursRemaining
+              state[pot].countdown.hoursRemaining = (state[pot].countdown.hoursRemaining < 11) ? ('0' + --state[pot].countdown.hoursRemaining) : --state[pot].countdown.minutesRemaining  
               state[pot].countdown.minutesRemaining = 59
               state[pot].countdown.secondsRemaining = 59
             } else {

@@ -19,6 +19,9 @@ props: {
     value: {
         type: Number,
         required: true
+    },
+    currency: {
+        type: String,
     }
 },
 
@@ -40,7 +43,7 @@ methods: {
     new TWEEN.Tween({ tweeningValue: startValue })
         .to({ tweeningValue: endValue }, 2000)
         .onUpdate(function () {
-            vm.tweeningValue = vm.formatMoney(this.tweeningValue.toFixed(2))
+            vm.tweeningValue = vm.currency + vm.formatMoney(this.tweeningValue.toFixed(2))
             })
             .start()
 

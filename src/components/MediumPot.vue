@@ -7,7 +7,9 @@
                 </v-col>
                 <v-col>
                     <div>
-                        <span>{{currency}}</span> <span><AnimatedAmount :value="amount-0" /></span>
+                        <AnimatedAmount 
+                            :value="amount-0" 
+                            :currency="currency" />
                     </div>
                     <DropCounter v-if="countdown" :pot="pot"  />
                 </v-col>
