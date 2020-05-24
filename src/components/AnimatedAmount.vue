@@ -1,5 +1,8 @@
 <template>
-    <div>
+    <div 
+        class="amount-display"
+        align="center"
+        justify="center">
         {{ tweeningValue }}
     </div>
 </template>
@@ -11,6 +14,7 @@ export default {
 
 data: () => {
     return {
+        fontClass: 'display-2',
         tweeningValue: 0
     }
 },
@@ -73,3 +77,12 @@ mounted() {
 },
 }
 </script>
+
+<style>
+.amount-display {
+    font-family: "Times New Roman", Times, serif !important;
+    background: -webkit-linear-gradient(#ebed72, #a79b2d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+</style>

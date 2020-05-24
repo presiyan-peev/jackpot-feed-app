@@ -1,10 +1,12 @@
 <template>
     <div>
         <v-img :src="dailyDropPic"></v-img>
-        <v-img :src="box">
-			<AnimatedAmount 
-				:value="getDailyPot.amount-0" 
-				:currency="getDailyPot.currency" />
+        <v-img 
+            :src="box"
+            class="box-image">
+            <AnimatedAmount 
+                :value="getDailyPot.amount-0" 
+                :currency="getDailyPot.currency" />
 		</v-img>
         <v-sheet tile dark class="sheet">
             <DropCounter pot="daily" />
@@ -42,5 +44,9 @@ export default {
 <style>
 .sheet{
     height: 50px;
+}
+.box-image{
+    display: flex;
+    align-items: center;
 }
 </style>

@@ -139,7 +139,7 @@ export default new Vuex.Store({
       dispatch('fetchPotsFromApi').then(
       setInterval(() => {
         dispatch('fetchPotsFromApi')
-      }, 5000))
+      }, 30000))
 
       setInterval(() => {
         dispatch('countdown', 'dailyPot')
@@ -186,6 +186,7 @@ export default new Vuex.Store({
       commit('SET_DAILY_DROP', _daily)
       commit('SET_SUPER_DROP', _super)
       commit('SET_HOURLY_DROP', _hourly)
+      commit('INCREMENT_FETCH_COUNT')
     },
 
     dummyFetchPots({ dispatch }) {

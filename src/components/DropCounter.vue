@@ -1,7 +1,11 @@
 <template>
-    <div>
-        <span>Must drop in: 🕒 </span>
-        <span>{{cd.hoursRemaining}}:{{cd.minutesRemaining}}:{{cd.secondsRemaining}}</span>
+    <div class="drop-counter-container">
+
+        <p 
+            class="drop-counter">
+            Must drop in: 🕒 {{cd.hoursRemaining}}:{{cd.minutesRemaining}}:{{cd.secondsRemaining}}
+        </p>
+
     </div>
 </template>
 
@@ -32,3 +36,16 @@ computed: {
 },
 }
 </script>
+
+<style>
+.drop-counter-container  {
+    display: flex;
+  justify-content: center;
+}
+.drop-counter {
+    background: black;
+    border-radius: 50px;
+    padding: 0.1rem 1rem;
+    margin: 0 auto;
+}
+</style>

@@ -1,11 +1,21 @@
 <template>
     <div class="medium-pot">
         <v-container>
-            <v-row>
-                <v-col>
+            <v-row
+                align="center"
+                justify="center">
+                <v-col
+                    cols="12"
+                    xs="5"
+                    sm="5"
+                    md="5">
                     <v-img :src="dropImg"></v-img>
                 </v-col>
-                <v-col>
+                <v-col
+                    cols="12"
+                    xs="7"
+                    sm="7"
+                    md="7">
                     <div>
                         <AnimatedAmount 
                             :value="getHourlyPot.amount-0" 
