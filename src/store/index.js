@@ -38,7 +38,6 @@ export default new Vuex.Store({
         state.superPot = val
       }
       state.superPot.amount = (val.amount * Math.pow(1.001, state.fetchCount)).toFixed(2)     // after each fetch the amount will be increased by 0.1%
-      console.log("state: "+state.superPot.amount)
     },
     SET_HOURLY_DROP(state, val) {
       if(state.fetchCount == 0){

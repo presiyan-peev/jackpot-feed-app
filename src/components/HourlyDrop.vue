@@ -21,7 +21,16 @@
                             :value="getHourlyPot.amount-0" 
                             :currency="getHourlyPot.currency" />
                     </div>
-                    <DropCounter v-if="getHourlyPot.countdown" pot="hourly" />
+                    <div 
+                        class="hourlyDropCounterContainer"
+                        :style="containerStyle">
+                        <p 
+                            class="hourlyDropCounter"
+                            ref="hourlyDropCounter" 
+                            :style="textStyle">
+                            Must drop in: 🕒 {{getHourlyPotCountDown.hoursRemaining}}:{{getHourlyPotCountDown.minutesRemaining}}:{{getHourlyPotCountDown.secondsRemaining}}
+                        </p>
+                    </div>
                 </v-col>
             </v-row>
         </v-container>
@@ -32,7 +41,7 @@
 import hourlyDrop from "../assets/hourly_drop.png"
 
 import AnimatedAmount from '@/components/AnimatedAmount.vue'
-import DropCounter from '@/components/DropCounter.vue'
+//import DropCounter from '@/components/DropCounter.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -40,16 +49,34 @@ export default {
     data: () => {
         return {
             dropImg: hourlyDrop,
+
+            dropCounterParentSizes: {
+                originalFontSize: '0px',
+                previewWidth: '0px',
+                previewVertOffset: '0px',
+            }
         }
     },
     components: {
         AnimatedAmount,
-        DropCounter,
+        //DropCounter,
     },
     computed: {
         ...mapGetters([
             'getHourlyPot',
+            'getHourlyPotCountDown'
         ]),
+    },
+
+    methods: {
+        setDropCounterParentSize() {
+            this.dropCounterParentSizes.originalFontSize = '15px'
+            this.dropCounterParentSizes.previewWidth = this.$refs.dropCounterParent.clientHeight
+            this.dropCounterParentSizes.previewVertOffset = '2px'
+        }
+    },
+    mounted() {
+        this.setDropCounterParentSize()
     }
 }
 </script>
@@ -57,5 +84,16 @@ export default {
 <style>
 .medium-pot {
     background: url("../assets/stars.png");
+}
+.hourlyDropCounterContainer  {
+    display: flex;
+    justify-content: center;
+}
+.hourlyDropCounter {
+    background: black;
+    border-radius: 50px;
+    font-size: 0.6vw;
+    padding: 0.1rem 1rem;
+    margin: 0 auto;
 }
 </style>
