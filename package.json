@@ -13,6 +13,7 @@
     "core-js": "^3.6.4",
     "tween": "^0.9.0",
     "vue": "^2.6.11",
+    "vue-resize-text": "^0.1.1",
     "vue-router": "^3.1.6",
     "vuetify": "^2.2.11",
     "vuex": "^3.1.3"

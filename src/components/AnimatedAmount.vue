@@ -2,13 +2,15 @@
     <div 
         class="amount-display"
         align="center"
-        justify="center">
+        justify="center"
+        v-resize-text="{ratio:0.7}">
         {{ tweeningValue }}
     </div>
 </template>
 
 <script>
 import TWEEN from 'tween'
+import ResizeText from 'vue-resize-text'
 
 export default {
 
@@ -27,6 +29,10 @@ props: {
     currency: {
         type: String,
     }
+},
+
+directives: {
+    ResizeText
 },
 
 watch: {

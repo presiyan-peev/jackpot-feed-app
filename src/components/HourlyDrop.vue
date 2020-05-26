@@ -22,14 +22,15 @@
                             :value="getHourlyPot.amount-0" 
                             :currency="getHourlyPot.currency" />
                     </div>
-                    <div 
+                    <DropCounter drop="hourly" />
+                    <!-- <div 
                         class="hourlyDropCounterContainer">
                         <p 
                             class="hourlyDropCounter"
                             ref="hourlyDropCounter">
                             Must drop in: 🕒 {{getHourlyPotCountDown.hoursRemaining}}:{{getHourlyPotCountDown.minutesRemaining}}:{{getHourlyPotCountDown.secondsRemaining}}
                         </p>
-                    </div>
+                    </div> -->
                 </v-col>
             </v-row>
         </v-container>
@@ -41,7 +42,7 @@
 import hourlyDrop from "../assets/hourly_drop.png"
 
 import AnimatedAmount from '@/components/AnimatedAmount.vue'
-//import DropCounter from '@/components/DropCounter.vue'
+import DropCounter from '@/components/DropCounter.vue'
 import TransparentComponent from '@/components/TransparentComponent.vue'
 
 import { mapGetters } from 'vuex'
@@ -50,16 +51,11 @@ export default {
     data: () => {
         return {
             dropImg: hourlyDrop,
-
-            dropCounterParentSizes: {
-                originalFontSize: '0px',
-                previewWidth: '0px',
-                previewVertOffset: '0px',
-            }
         }
     },
     components: {
         AnimatedAmount,
+        DropCounter,
         TransparentComponent,
     },
     computed: {
@@ -68,17 +64,6 @@ export default {
             'getHourlyPotCountDown'
         ]),
     },
-
-    methods: {
-        setDropCounterParentSize() {
-            this.dropCounterParentSizes.originalFontSize = '15px'
-            this.dropCounterParentSizes.previewWidth = this.$refs.dropCounterParent.clientHeight
-            this.dropCounterParentSizes.previewVertOffset = '2px'
-        }
-    },
-    mounted() {
-        this.setDropCounterParentSize()
-    }
 }
 </script>
 

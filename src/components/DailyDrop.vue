@@ -9,14 +9,15 @@
                 :currency="getDailyPot.currency" />
 		</v-img>
         <div class="sheet">
-            <div 
+            <!-- <div 
             class="dailyDropCounterContainer">
             <p 
                 class="dailyDropCounter"
                 ref="dailyDropCounter">
                 Must drop in: 🕒 {{getDailyPotCountDown.hoursRemaining}}:{{getDailyPotCountDown.minutesRemaining}}:{{getDailyPotCountDown.secondsRemaining}}
             </p>
-            </div>
+            </div> -->
+            <DropCounter drop="daily" />
         </div>
         <div class="transparentDailyRectangle"></div>
     </div>
@@ -27,7 +28,7 @@ import dailyDropPic from "../assets/daily_drop.png"
 import box from "../assets/box.png"
 
 import AnimatedAmount from '@/components/AnimatedAmount.vue'
-// import TransparentComponent from '@/components/TransparentComponent.vue'
+import DropCounter from '@/components/DropCounter.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -39,7 +40,8 @@ export default {
         }
     },
     components: {
-		AnimatedAmount,
+        AnimatedAmount,
+        DropCounter
     },
     computed: {
         ...mapGetters([
@@ -53,6 +55,7 @@ export default {
 .dailyDrop {
     position: relative;
     margin-bottom: 21px;
+    z-index: 1;
 }
 .box-image{
     display: flex;
@@ -66,18 +69,6 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.dailyDropCounterContainer  {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-.dailyDropCounter {
-    background: black;
-    border-radius: 50px;
-    font-size: 0.8vw;
-    padding: 0.1rem 1rem;
-    /* margin: 0 auto; */
-}
 .transparentDailyRectangle {
     position: absolute;
     height: 35vh;
@@ -85,6 +76,6 @@ export default {
     
     background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));
     bottom: 0px;
-    z-index: 1;
+    z-index: 0;
 }
 </style>
