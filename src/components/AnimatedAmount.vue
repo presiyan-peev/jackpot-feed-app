@@ -84,5 +84,6 @@ mounted() {
     background: -webkit-linear-gradient(#ebed72, #a79b2d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 25px;
 }
 </style>

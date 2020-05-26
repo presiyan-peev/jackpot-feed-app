@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="dailyDrop">
         <v-img :src="dailyDropPic"></v-img>
         <v-img 
             :src="box"
@@ -8,19 +8,17 @@
                 :value="getDailyPot.amount-0" 
                 :currency="getDailyPot.currency" />
 		</v-img>
-        <v-sheet tile dark class="sheet" ref="dropCounterParent">
+        <div class="sheet">
             <div 
-            class="dailyDropCounterContainer"
-            :style="containerStyle">
+            class="dailyDropCounterContainer">
             <p 
                 class="dailyDropCounter"
-                ref="dailyDropCounter" 
-                :style="textStyle">
+                ref="dailyDropCounter">
                 Must drop in: 🕒 {{getDailyPotCountDown.hoursRemaining}}:{{getDailyPotCountDown.minutesRemaining}}:{{getDailyPotCountDown.secondsRemaining}}
             </p>
-
+            </div>
         </div>
-        </v-sheet>
+        <div class="transparentDailyRectangle"></div>
     </div>
 </template>
 
@@ -29,7 +27,7 @@ import dailyDropPic from "../assets/daily_drop.png"
 import box from "../assets/box.png"
 
 import AnimatedAmount from '@/components/AnimatedAmount.vue'
-//import DropCounter from '@/components/DropCounter.vue'
+// import TransparentComponent from '@/components/TransparentComponent.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -38,18 +36,10 @@ export default {
         return {
             dailyDropPic: dailyDropPic,
             box: box,
-
-            dropCounterParentSizes: {
-                originalFontSize: '0px',
-                previewWidth: '0px',
-                previewVertOffset: '0px',
-                isReady: false
-            }
         }
     },
     components: {
 		AnimatedAmount,
-        
     },
     computed: {
         ...mapGetters([
@@ -57,38 +47,44 @@ export default {
             "getDailyPotCountDown" 
         ])
     },
-
-    methods: {
-        setDropCounterParentSize() {
-            this.dropCounterParentSizes.originalFontSize = '15px'
-            this.dropCounterParentSizes.previewWidth = this.$refs.dropCounterParent.clientHeight
-            this.dropCounterParentSizes.previewVertOffset = '2px'
-            this.isReady = true
-        }
-    },
-
-    mounted() {
-        this.setDropCounterParentSize()
-    }
 }
 </script>
 <style>
-.sheet{
-    height: 50px;
+.dailyDrop {
+    position: relative;
+    margin-bottom: 21px;
 }
 .box-image{
     display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.sheet {
+    display: flex;
+    height: 80px;
+    justify-content: center;
     align-items: center;
 }
 .dailyDropCounterContainer  {
     display: flex;
     justify-content: center;
+    align-content: center;
 }
 .dailyDropCounter {
     background: black;
     border-radius: 50px;
     font-size: 0.8vw;
     padding: 0.1rem 1rem;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+}
+.transparentDailyRectangle {
+    position: absolute;
+    height: 35vh;
+    width: 100%;
+    
+    background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));
+    bottom: 0px;
+    z-index: 1;
 }
 </style>

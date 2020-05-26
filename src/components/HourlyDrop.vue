@@ -1,5 +1,6 @@
 <template>
     <div class="medium-pot">
+        <TransparentComponent :stars="true">
         <v-container>
             <v-row
                 align="center"
@@ -22,18 +23,17 @@
                             :currency="getHourlyPot.currency" />
                     </div>
                     <div 
-                        class="hourlyDropCounterContainer"
-                        :style="containerStyle">
+                        class="hourlyDropCounterContainer">
                         <p 
                             class="hourlyDropCounter"
-                            ref="hourlyDropCounter" 
-                            :style="textStyle">
+                            ref="hourlyDropCounter">
                             Must drop in: 🕒 {{getHourlyPotCountDown.hoursRemaining}}:{{getHourlyPotCountDown.minutesRemaining}}:{{getHourlyPotCountDown.secondsRemaining}}
                         </p>
                     </div>
                 </v-col>
             </v-row>
         </v-container>
+        </TransparentComponent>
     </div>
 </template>
 
@@ -42,6 +42,7 @@ import hourlyDrop from "../assets/hourly_drop.png"
 
 import AnimatedAmount from '@/components/AnimatedAmount.vue'
 //import DropCounter from '@/components/DropCounter.vue'
+import TransparentComponent from '@/components/TransparentComponent.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -59,7 +60,7 @@ export default {
     },
     components: {
         AnimatedAmount,
-        //DropCounter,
+        TransparentComponent,
     },
     computed: {
         ...mapGetters([
@@ -82,9 +83,6 @@ export default {
 </script>
 
 <style>
-.medium-pot {
-    background: url("../assets/stars.png");
-}
 .hourlyDropCounterContainer  {
     display: flex;
     justify-content: center;

@@ -1,8 +1,11 @@
 <template>
   <div class="game">
-    <DailyDrop />
-    <SuperDrop />
-    <HourlyDrop />
+	<div class="drops">
+		<DailyDrop />
+		<SuperDrop />
+		<HourlyDrop />
+	</div>
+	<div class="transparentHugeRoundedBox"></div>
   </div> 
 </template>
 
@@ -32,11 +35,32 @@ export default {
 
 	created () {
 		// This is the method that fetches data from local API
-		this.fetchPots()
+		// this.fetchPots()
 
 		// This is the method that "fetches" data stored in the store, as the local API cannot be deployed to NETLIFY
-		// this.dummyFetchPots()
+		this.dummyFetchPots()
 	}
 }
 
 </script>
+
+<style>
+.game {
+	position: relative;
+}
+.drops {
+	position: relative;
+	z-index: 1;
+}
+.transparentHugeRoundedBox {
+	border-radius: 2vh;
+
+    position: absolute;
+    height: 68vh;
+    width: 100%;
+    
+    background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));
+    bottom: 0px;
+    z-index: 0;
+}
+</style>
