@@ -26,6 +26,6 @@ export default {
   align-items: center;
   justify-content: center;
   height: 82px;
-  background: radial-gradient(rgba(0, 0, 0, 0.9), rgba(33, 39, 89, 0.747));
+  background: radial-gradient(rgba(0, 0, 0, 0.452) 50%, rgba(33, 39, 89, 0.747) 75%);
 }
 </style>

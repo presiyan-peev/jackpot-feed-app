@@ -23,14 +23,6 @@
                             :currency="getHourlyPot.currency" />
                     </div>
                     <DropCounter drop="hourly" />
-                    <!-- <div 
-                        class="hourlyDropCounterContainer">
-                        <p 
-                            class="hourlyDropCounter"
-                            ref="hourlyDropCounter">
-                            Must drop in: 🕒 {{getHourlyPotCountDown.hoursRemaining}}:{{getHourlyPotCountDown.minutesRemaining}}:{{getHourlyPotCountDown.secondsRemaining}}
-                        </p>
-                    </div> -->
                 </v-col>
             </v-row>
         </v-container>

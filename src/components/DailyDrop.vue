@@ -9,14 +9,6 @@
                 :currency="getDailyPot.currency" />
 		</v-img>
         <div class="sheet">
-            <!-- <div 
-            class="dailyDropCounterContainer">
-            <p 
-                class="dailyDropCounter"
-                ref="dailyDropCounter">
-                Must drop in: 🕒 {{getDailyPotCountDown.hoursRemaining}}:{{getDailyPotCountDown.minutesRemaining}}:{{getDailyPotCountDown.secondsRemaining}}
-            </p>
-            </div> -->
             <DropCounter drop="daily" />
         </div>
         <div class="transparentDailyRectangle"></div>
