@@ -38,6 +38,6 @@ computed: {
 .dropCounter {
     background: black;
     border-radius: 50px;
-    padding: 0.1rem 1rem;
+    padding: 0.1em 1em;
 }
 </style>

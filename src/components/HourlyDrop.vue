@@ -1,28 +1,27 @@
 <template>
     <div class="medium-pot">
-        <TransparentComponent :stars="true">
+        <TransparentComponent>
         <v-container>
             <v-row
                 align="center"
                 justify="center">
                 <v-col
-                    cols="12"
-                    xs="5"
-                    sm="5"
-                    md="5">
-                    <v-img :src="dropImg"></v-img>
+                    cols="5">
+                    <v-img 
+                        :src="dropImg"
+                        contain
+                        ></v-img>
                 </v-col>
                 <v-col
-                    cols="12"
-                    xs="7"
-                    sm="7"
-                    md="7">
+                    cols="7">
                     <div>
                         <AnimatedAmount 
                             :value="getHourlyPot.amount-0" 
                             :currency="getHourlyPot.currency" />
                     </div>
-                    <DropCounter drop="hourly" />
+                    <div class="hourlyDropCounterContainer">
+                        <DropCounter drop="hourly" />
+                    </div>
                 </v-col>
             </v-row>
         </v-container>

@@ -1,31 +1,32 @@
 <template>
-  <div class="padding">
-    <div :class="{stars: stars}">
+  <div class="pb-1">
+    <v-img 
+      :src="starsUrl">
       <div class="transparentComponent">
         <slot></slot>
       </div>
-    </div>
+    </v-img>
   </div>
 </template>
 
 <script>
+import starsUrl from "../assets/stars.png"
+
 export default {
-  props: ["stars"]
+  data: () => {
+    return {
+      starsUrl: starsUrl
+    }
+  }
 };
 </script>
 
 <style>
-.stars {
-  background: url("../assets/stars.png");
-}
-.padding {
-    padding-bottom: 21px;
-}
 .transparentComponent {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 82px;
-  background: radial-gradient(rgba(0, 0, 0, 0.452) 50%, rgba(33, 39, 89, 0.747) 75%);
+  height: 11vh;
+  background: radial-gradient(rgba(0, 0, 0, 0.452), rgba(33, 39, 89, 0.747));
 }
 </style>

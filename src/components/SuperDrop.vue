@@ -1,12 +1,14 @@
 <template>
   <div class="medium-pot">
-    <TransparentComponent :stars="true">
+    <TransparentComponent>
       <v-container>
         <v-row align="center" justify="center">
-          <v-col cols="12" xs="5" sm="5" md="5">
-            <v-img :src="dropImg"></v-img>
+          <v-col cols="5">
+            <v-img 
+              :src="dropImg"
+              contain></v-img>
           </v-col>
-          <v-col cols="12" xs="7" sm="7" md="7">
+          <v-col cols="7">
             <div>
               <AnimatedAmount :value="getSuperPot.amount-0" :currency="getSuperPot.currency" />
             </div>

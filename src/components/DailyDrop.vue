@@ -8,9 +8,13 @@
                 :value="getDailyPot.amount-0" 
                 :currency="getDailyPot.currency" />
 		</v-img>
-        <div class="sheet">
-            <DropCounter drop="daily" />
-        </div>
+
+            <v-responsive :aspect-ratio="15/4">
+                <div class="sheet">
+                <DropCounter drop="daily" />        
+                </div>
+            </v-responsive>
+
         <div class="transparentDailyRectangle"></div>
     </div>
 </template>
@@ -46,7 +50,7 @@ export default {
 <style>
 .dailyDrop {
     position: relative;
-    margin-bottom: 21px;
+    margin-bottom: 3vh;
     z-index: 1;
 }
 .box-image{
@@ -57,7 +61,7 @@ export default {
 }
 .sheet {
     display: flex;
-    height: 80px;
+    height: 11vh;
     justify-content: center;
     align-items: center;
 }

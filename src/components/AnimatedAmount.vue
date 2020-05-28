@@ -1,7 +1,6 @@
 <template>
     <div 
         class="amount-display"
-        :elevation="elevation"
         align="center"
         justify="center"
         v-resize-text="{ratio:0.7, minFontSize: '1px'}">
@@ -17,7 +16,6 @@ export default {
 
 data: () => {
     return {
-        elevation: 24,
         fontClass: 'display-2',
         tweeningValue: 0
     }
