@@ -56,7 +56,7 @@ export default {
 	border-radius: 2vh;
 
     position: absolute;
-    height: 68vh;
+    height: 75vh;
     width: 100%;
     
     background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));

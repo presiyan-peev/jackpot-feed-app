@@ -1,6 +1,9 @@
 <template>
     <div class="dailyDrop">
-        <v-img :src="dailyDropPic"></v-img>
+        <div class="dailyDropContent">
+        <v-img 
+            :src="dailyDropPic"
+            class="dailyDropPic"></v-img>
         <v-img 
             :src="box"
             class="box-image">
@@ -9,12 +12,12 @@
                 :currency="getDailyPot.currency" />
 		</v-img>
 
-            <v-responsive :aspect-ratio="15/4">
-                <div class="sheet">
+        <v-responsive :aspect-ratio="15/4" class="sheet">
+            <div class="dropCounterContainer">
                 <DropCounter drop="daily" />        
-                </div>
-            </v-responsive>
-
+            </div>
+        </v-responsive>
+        </div>
         <div class="transparentDailyRectangle"></div>
     </div>
 </template>
@@ -51,17 +54,20 @@ export default {
 .dailyDrop {
     position: relative;
     margin-bottom: 3vh;
-    z-index: 1;
 }
+
 .box-image{
     display: flex;
     align-items: center;
     position: relative;
-    z-index: 2;
 }
-.sheet {
+.sheet {    
     display: flex;
-    height: 11vh;
+    justify-content: center;
+    align-items: center;
+}
+.dropCounterContainer {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -72,6 +78,6 @@ export default {
     
     background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));
     bottom: 0px;
-    z-index: 0;
+    z-index: -1;
 }
 </style>

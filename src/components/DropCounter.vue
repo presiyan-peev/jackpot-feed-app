@@ -1,9 +1,9 @@
 <template>
-      <div  
+      <p  
           class="dropCounter"
           v-resize-text="{ratio:1.9, minFontSize: '1px'}">
           Must drop in: 🕒 {{cd.hoursRemaining}}:{{cd.minutesRemaining}}:{{cd.secondsRemaining}}
-      </div >
+      </p >
 </template>
 
 <script>
