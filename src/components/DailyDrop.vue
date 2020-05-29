@@ -18,7 +18,8 @@
             </div>
         </v-responsive>
         </div>
-        <div class="transparentDailyRectangle"></div>
+        
+        <div class="transparentDailyRectangle"><v-responsive :aspect-ratio="150/131" ></v-responsive></div>
     </div>
 </template>
 
@@ -55,7 +56,10 @@ export default {
     position: relative;
     margin-bottom: 3vh;
 }
-
+.dailyDropContent {
+    position: relative;
+    z-index: 0;
+}
 .box-image{
     display: flex;
     align-items: center;
@@ -73,7 +77,8 @@ export default {
 }
 .transparentDailyRectangle {
     position: absolute;
-    height: 35vh;
+    
+    /* height: 35vh; */
     width: 100%;
     
     background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));

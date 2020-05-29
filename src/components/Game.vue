@@ -5,7 +5,7 @@
 		<SuperDrop />
 		<HourlyDrop />
 	</div>
-	<div class="transparentHugeRoundedBox"></div>
+	<v-responsive :aspect-ratio="15/28" class="transparentHugeRoundedBox"></v-responsive>
   </div> 
 </template>
 
@@ -56,7 +56,6 @@ export default {
 	border-radius: 2vh;
 
     position: absolute;
-    height: 75vh;
     width: 100%;
     
     background: radial-gradient(rgba(0, 0, 0, 0), rgba(33, 39, 89, 0.3));

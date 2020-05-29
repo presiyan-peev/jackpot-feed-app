@@ -29,7 +29,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 11vh; */
   background: radial-gradient(rgba(0, 0, 0, 0.452), rgba(33, 39, 89, 0.747));
 }
 .sheet {    
