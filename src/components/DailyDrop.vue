@@ -12,7 +12,7 @@
                 :currency="getDailyPot.currency" />
 		</v-img>
 
-        <v-responsive :aspect-ratio="15/4" class="sheet">
+        <v-responsive :aspect-ratio="15/4" class="dropCounterResponsiveness">
             <div class="dropCounterContainer">
                 <DropCounter drop="daily" />        
             </div>
@@ -65,7 +65,7 @@ export default {
     align-items: center;
     position: relative;
 }
-.sheet {    
+.dropCounterResponsiveness {    
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,7 +2,7 @@
       <p  
           class="dropCounter"
           v-resize-text="{ratio:1.9, minFontSize: '1px'}">
-          Must drop in: 🕒 {{cd.hoursRemaining}}:{{cd.minutesRemaining}}:{{cd.secondsRemaining}}
+          Must drop in: 🕒 <span class="timeRemaining">{{cd.hoursRemaining}}:{{cd.minutesRemaining}}:{{cd.secondsRemaining}}</span> 
       </p >
 </template>
 
@@ -39,5 +39,8 @@ computed: {
     background: black;
     border-radius: 50px;
     padding: 0.1em 1em;
+}
+.timeRemaining {
+    color: wheat;
 }
 </style>
